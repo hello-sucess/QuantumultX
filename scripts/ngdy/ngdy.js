@@ -3,32 +3,36 @@
 南瓜电影 unlock Vip by 渤涵
 
 [rewrite_local]
-https?:\/\/p-api\.vcinema\.cn\/v5.0\/user/ url script-response-body buehen0426/Scripts/ngdy/ngdy.js
+^https:\/\/(p\.doras\.api\.vcinema\.cn|pay\.guoing\.com)\/(v5\.0\/user\/\d+$|d\user\/get_user_info) url script-response-body buehen0426/Scripts/ngdy/ngdy.js
 
 [MITM]
-hostname = *.vcinema.cn
+hostname = *.vcinema.cn, pay.guoing.com, p.doras.api.vcinema.cn
 
 */
 
-const path1 = "/user/";
-var body = $response.body;
-var url = $request.url;
-if (url.indexOf(path1) != -1){
-  let obj = JSON.parse(body);
-  obj.content["user_seed_int"] = "666666";
-  obj.content["user_modal_list"] = JSON.parse('[{"honorName":"暴力美学","honorImg":"http://resource.vcinema.com.cn/image/user/medal/blmxdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同动作片","collectionKey":"violence_aesthetics","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"政治家","honorImg":"http://resource.vcinema.com.cn/image/user/medal/zzjdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同战争片","collectionKey":"statesman","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"虚拟现实","honorImg":"http://resource.vcinema.com.cn/image/user/medal/xnxsdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同科幻片","collectionKey":"virtual_reality","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"冒险家","honorImg":"http://resource.vcinema.com.cn/image/user/medal/mxjdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同冒险片","collectionKey":"adventurer","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"心思缜密","honorImg":"http://resource.vcinema.com.cn/image/user/medal/xszmdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同犯罪片","collectionKey":"meticulous_mind","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"内心强大","honorImg":"http://resource.vcinema.com.cn/image/user/medal/nxqddl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同灾难片","collectionKey":"hearts_strong","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"幻想大师","honorImg":"http://resource.vcinema.com.cn/image/user/medal/hxdsdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同魔幻片","collectionKey":"master_fantasy","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"智商爆表","honorImg":"http://resource.vcinema.com.cn/image/user/medal/zsbbdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同悬疑片","collectionKey":"iq_extraordinary","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"最佳编剧","honorImg":"http://resource.vcinema.com.cn/image/user/medal/zjbjdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同剧情片","collectionKey":"best_screenplay","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"惊声尖叫","honorImg":"http://resource.vcinema.com.cn/image/user/medal/jsjjdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同恐怖片","collectionKey":"schriek","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"沙发土豆","honorImg":"http://resource.vcinema.com.cn/image/user/medal/sftddl.png","honorType":"观影勋章","honorMatch":"已观看%s集","honorConditions":"累积观看75集不同电视剧","collectionKey":"couch_potato","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":true,"is_get":true},{"honorName":"观影老司机","honorImg":"http://resource.vcinema.com.cn/image/user/medal/gylsjdl.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看200部不同电影","collectionKey":"old_driver","honorUri":"pumpkin://vcinema.cn/epg/home/index","get":true,"is_get":true},{"honorName":"每天逛逛","honorImg":"http://resource.vcinema.com.cn/image/user/medal/mtggdl.png","honorType":"活跃勋章","honorMatch":"已登录%s天","honorConditions":"连续登录30天","collectionKey":"login_everyday","honorUri":"","get":true,"is_get":true},{"honorName":"收藏家","honorImg":"http://resource.vcinema.com.cn/image/user/medal/scjdl.png","honorType":"活跃勋章","honorMatch":"已加入片单%s部","honorConditions":"加入片单100部影视","collectionKey":"collector","honorUri":"pumpkin://vcinema.cn/epg/home/index","get":true,"is_get":true},{"honorName":"西部牛仔","honorImg":"http://resource.vcinema.com.cn/image/user/medal/xbnzmr.png","honorType":"观影勋章","honorMatch":"已观看%s部","honorConditions":"累积观看50部不同西部片","collectionKey":"west_cowboy","honorUri":"pumpkin://vcinema.cn/epg/subpage/index","get":false,"is_get":false},{"honorName":"笔下有神","honorImg":"http://resource.vcinema.com.cn/image/user/medal/bxysmr.png","honorType":"活跃勋章","honorMatch":"已写%s条","honorConditions":"写100条影评","collectionKey":"pen_god","honorUri":"pumpkin://vcinema.cn/sns/index","get":false,"is_get":false},{"honorName":"表示赞同","honorImg":"http://resource.vcinema.com.cn/image/user/medal/bsztmr.png","honorType":"活跃勋章","honorMatch":"已点%s个赞","honorConditions":"点200个赞","collectionKey":"show_agreed","honorUri":"pumpkin://vcinema.cn/sns/index","get":false,"is_get":false},{"honorName":"形象代言人","honorImg":"http://resource.vcinema.com.cn/image/user/medal/xxdyrmr.png","honorType":"活跃勋章","honorMatch":"已分享%s次","honorConditions":"分享100次","collectionKey":"spokesperson","honorUri":"pumpkin://vcinema.cn/epg/home/index","get":false,"is_get":false},{"honorName":"我是土豪","honorImg":"http://resource.vcinema.com.cn/image/user/medal/wsthmr.png","honorType":"续费勋章","honorMatch":"已续费%s元","honorConditions":"续费金额达到500元","collectionKey":"i_am_rich","honorUri":"pumpkin://vcinema.cn/account/pay/index","get":false,"is_get":false}]')
-  obj.content["user_movie_chart_list"] = JSON.parse('[{"searchDate":"07-04","movieDayTime":"13724"},{"searchDate":"07-05","movieDayTime":"13295"},{"searchDate":"07-06","movieDayTime":"20650"},{"searchDate":"07-07","movieDayTime":"20862"},{"searchDate":"07-08","movieDayTime":"13229"},{"searchDate":"07-09","movieDayTime":"181770"},{"searchDate":"07-10","movieDayTime":"13633"}]');
-  obj.content["user_photo"] = "https://s2.ax1x.com/2019/07/11/ZRNrbq.th.jpg";
-  obj.content["user_id"] = "9834189";
-  obj.content["user_phone"] = "13795486109";
-  obj.content["user_level_progress_str"] = "Lv5 男爵";
-  obj.content["user_level_str"] = "Lv5男爵";
-  obj.content["user_vip_state"] = "2";
-  obj.content["user_nickname"] = "南瓜粉_6109";
-  obj.content["user_vip_start_date"] = "2019.05.18";
-  obj.content["user_vip_end_date"] = "2066.01.01";
-  obj.content["user_vip_end_date_desc"] = "2066-01-01";
-  body = JSON.stringify(obj);
-}
 
-$done({body});
+var _0xaa31=["\x62\x6F\x64\x79","\x70\x61\x72\x73\x65","\x75\x72\x6C","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x76\x61\x74\x61\x72\x73\x32\x2E\x67\x69\x74\x68\x75\x62\x75\x73\x65\x72\x63\x6F\x6E\x74\x65\x6E\x74\x2E\x63\x6F\x6D\x2F\x75\x2F\x35\x33\x32\x31\x37\x31\x36\x30\x3F\x73\x3D\x34\x36\x30\x26\x76\x3D\x34","\u5357\u74DC\u7C89\x5f\x36\x31\x30\x39","\x76\x35\x2E\x30\x2F\x75\x73\x65\x72","\x75\x73\x65\x72\x2F\x67\x65\x74\x5F\x75\x73\x65\x72\x5F\x69\x6E\x66\x6F","\x69\x6E\x64\x65\x78\x4F\x66","\x75\x73\x65\x72\x5F\x73\x65\x65\x64\x5F\x69\x6E\x74","\x63\x6F\x6E\x74\x65\x6E\x74","\x36\x36\x36\x36\x36\x36\x36","\x75\x73\x65\x72\x5F\x70\x68\x6F\x74\x6F","\x75\x73\x65\x72\x5F\x69\x64","\x75\x73\x65\x72\x5F\x70\x68\x6F\x6E\x65","\x31\x33\x37\x39\x35\x34\x38\x36\x31\x30\x39","\x75\x73\x65\x72\x5F\x6C\x65\x76\x65\x6C\x5F\x73\x74\x72","\x4C\x76\x35\u7537\u7235","\x75\x73\x65\x72\x5F\x76\x69\x70\x5F\x73\x74\x61\x74\x65","\x32","\x75\x73\x65\x72\x5F\x6E\x69\x63\x6B\x6E\x61\x6D\x65","\x75\x73\x65\x72\x5F\x76\x69\x70\x5F\x73\x74\x61\x72\x74\x5F\x64\x61\x74\x65","\x32\x30\x31\x36\x2E\x30\x36\x2E\x30\x36","\x75\x73\x65\x72\x5F\x76\x69\x70\x5F\x65\x6E\x64\x5F\x64\x61\x74\x65","\x32\x30\x36\x36\x2E\x30\x36\x2E\x30\x36","\x32\x30\x36\x36\x2D\x30\x36\x2D\x30\x36","\x73\x74\x72\x69\x6E\x67\x69\x66\x79"];
+let obj=JSON[_0xaa31[1]]($response[_0xaa31[0]]);
+let url=$request[_0xaa31[2]];
+let photo=_0xaa31[3];
+let name=_0xaa31[4];
+const vip=_0xaa31[5];
+const pay=_0xaa31[6];
+if(url[_0xaa31[7]](vip)!=  -1){
+	obj[_0xaa31[9]][_0xaa31[8]]= _0xaa31[10];
+	obj[_0xaa31[9]][_0xaa31[11]]= photo;
+	obj[_0xaa31[9]][_0xaa31[12]]= 1000772;
+	obj[_0xaa31[9]][_0xaa31[13]]= _0xaa31[14];
+	obj[_0xaa31[9]][_0xaa31[15]]= _0xaa31[16];
+	obj[_0xaa31[9]][_0xaa31[17]]= _0xaa31[18];
+	obj[_0xaa31[9]][_0xaa31[19]]= name;
+	obj[_0xaa31[9]][_0xaa31[20]]= _0xaa31[21];
+	obj[_0xaa31[9]][_0xaa31[22]]= _0xaa31[23]
+	};
+if(url[_0xaa31[7]](pay)!=  -1){
+	obj[_0xaa31[9]][_0xaa31[22]]= _0xaa31[24];
+	obj[_0xaa31[9]][_0xaa31[13]]= _0xaa31[14];
+	obj[_0xaa31[9]][_0xaa31[19]]= name;
+	obj[_0xaa31[9]][_0xaa31[11]]= photo
+	};
+$done({body:JSON[_0xaa31[25]](obj)}) 
