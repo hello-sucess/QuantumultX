@@ -1,14 +1,4 @@
 
-
-[rewrite_local]
-https:\/\/api.towords.com\/cms-app\/(product\/get_ios_appstore_product_info.do|stat\/get_user_stat.do|account\/register_and_login.do|stat\/get_user_check_in_info.do|account\/check_user_token.do) url script-response-body tuoci_vip.js
-
-[MITM]
-hostname = api.towords.com
-
-
-
-
 const path1 = "/product/get_ios_appstore_product_info.do";
 const path2 = "/stat/get_user_stat.do";
 const path3 = "/account/register_and_login.do";
